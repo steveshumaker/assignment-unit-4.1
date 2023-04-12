@@ -147,3 +147,36 @@ console.log(`posOnly with array [0, -1, 4] should return [4]: ${posOnly([0, -1, 
 // 11. Pick a problem from Edabit(https://edabit.com/) or 
 //     CodeWars(https://www.codewars.com/). Then describe it 
 //     here in a comment, write the function, and test it!
+
+/* Codewars - Disemvowel Trolls
+** The purpose of this function is to combat trolls by
+** removing each vowel from their comment. This function
+** will accept a string as an input, and return a string 
+** with the vowels removed. For the purposes of this
+** problem, y is not a vowel.
+*/
+
+/* I originally did this using a for in loop to iterate over the string,
+** then a for of loop to iterate over each vowel. If the value of str at
+** index x was equal to any value in vowels, I
+** then used str.replace. This worked, but at a certain string
+** length it would remove an index != the vowel/string index I wanted to remove.
+** I had trouble figuring this out, so looked up ways to see if a value is in an array,
+** and found the array.includes method...and that was a lot easier.
+*/
+
+function disemvowel(str) {
+  let vowels = ['a', 'e', 'i', 'o', 'u'];
+  for (x of str) {
+    if (vowels.includes(x.toLowerCase())) {
+      str = str.replace(x, '');
+    }
+  }
+  return str;
+}
+
+console.log(`testing noVowels with 'tEst', expect 'tst': ${noVowels('tEst')}`);
+console.log(`testing noVowels with 'No offense but,\nYour writing is among the worst I've ever read', expect 'tst': ${disemvowel("No offense but,\nYour writing is among the worst I've ever read")}`);
+
+
+
